@@ -35,3 +35,7 @@ I used a lava texture from https://3dtextures.me/ since I thought it would be th
 Below is what this looks like in the inspector:
 
 ![image](https://user-images.githubusercontent.com/58942233/233709513-bc8f1a79-91dd-446b-aa10-ecb32a758b9c.png)
+
+As a flowchart, it goes like this:
+
+Vertex Function calculates wave amplitude, frequency, and speed with 2 sin functions -> C# has option to press 1 -> 1 is pressed -> speed changes to 50.
