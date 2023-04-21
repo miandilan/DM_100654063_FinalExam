@@ -18,4 +18,4 @@ Task 2:
 
 ![image](https://user-images.githubusercontent.com/58942233/233696945-751133c0-fcba-43f6-a4a9-93c2be2426b5.png)
 
-For this I was even numbered so I used a gravel texture image that I have used previously in the midterm in order to match the wallpaper look of the backwall. I added it as a normal map (in its own settings) to the normal map section of the generic material attached to the backwall. This was the best option for me since it required little work to edit the texture itself aside from having a new color (orange). 
+For this I was even numbered so I used a gravel texture image (from this website https://3dtextures.me/) that I have used previously in the midterm in order to match the wallpaper look of the backwall. I added it as a normal map (in its own settings) to the normal map section of the generic material attached to the backwall. This was the best option for me since it required little work to edit the texture itself aside from having a new color (orange). 
