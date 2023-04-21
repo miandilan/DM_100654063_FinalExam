@@ -2,7 +2,7 @@ Shader "Custom/WaterClassShader"
 {
     Properties
     {
-        _MainTex("Diffuse", 2D) = "white" {}
+        _MainTex("Diffuse", 2D) = "white" {}//properties for the texture, tint, and properties of the lava waves
         _Tint("Colour Tint", Color) = (1,1,1,1)
         _Freq("Frequency", Range(0,5)) = 3
         _Speed("Speed", Range(0, 100)) = 10
@@ -13,7 +13,7 @@ Shader "Custom/WaterClassShader"
          CGPROGRAM
         #pragma surface surf Lambert vertex:vert
 
-        struct Input
+        struct Input//input into the surf function
         {
             float2 uv_MainTex;
             float3 vertColor;
@@ -24,7 +24,7 @@ Shader "Custom/WaterClassShader"
         float _Speed;
         float _Amp;
 
-        struct appdata
+        struct appdata//input into the vertex shader
         {
             float4 vertex: POSITION;
             float3 normal: NORMAL;
@@ -33,19 +33,19 @@ Shader "Custom/WaterClassShader"
             float4 texcoord2: TEXCOORD2;
         };
 
-        void vert(inout appdata v, out Input o)
+        void vert(inout appdata v, out Input o)//Output the waveheight made from 2 sin functions controlling the amplitude and frequency
         {
             UNITY_INITIALIZE_OUTPUT(Input, o);
             float t = _Time * _Speed;
             float waveHeight = sin(t + v.vertex.x * _Freq) * _Amp + sin(t * 2 + v.vertex.x * _Freq * 2) * _Amp;
 
-            v.vertex.y = v.vertex.y + waveHeight;
-            v.normal = normalize(float3 (v.normal.x + waveHeight, v.normal.y, v.normal.z));
-            o.vertColor = waveHeight + 2;
+            v.vertex.y = v.vertex.y + waveHeight;//Update the y coordinates of each vertex according to the height float value
+            v.normal = normalize(float3 (v.normal.x + waveHeight, v.normal.y, v.normal.z));//get the normals for the vertex's x,y,z vals
+            o.vertColor = waveHeight + 2;//Color the color outputted with the increased height
         }
 
         sampler2D _MainTex;
-        void surf(Input IN, inout SurfaceOutput o)
+        void surf(Input IN, inout SurfaceOutput o)//output the textures uv coordinates and rgb values
         {
             float4 c = tex2D(_MainTex, IN.uv_MainTex);
             o.Albedo = c * IN.vertColor.rgb;
